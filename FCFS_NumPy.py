@@ -1,13 +1,18 @@
 #! /usr/bin/env python3
 #Подключение сторонних функций и процедур
-from numpy import zeros as array
-from prbms import gen_problems as gen
+from numpy import zeros as array                                                            #Функция генерации массива
+#Gauss
+from prbms import gen_problems as gen                                                       #Функция генерации задач
+#Random
+#from prbms import gen_problemsRnd as genR                                                  
 #vars
 Curr = 0
-CPUs = 1000
-Time = 1500
-#Gen. problems
+CPUs = 1000                                                                                 #Общее количество процессоров
+Time = 1500                                                                                 #Время, в рамках которого происходит планирование
+#Gen. problems Gauss
 problems = gen(1000)
+#Gen. problems Random
+#problems = genR(10000)
 #Gen. schedule
 schedule = array((CPUs,Time))
 #FCFS
@@ -62,3 +67,4 @@ while dTime < Time:
         dCPUs += 1
     dTime += 1
 print('Эфективность составила:',100 - round((sum/(CPUs*Time)),2)*100,'%')
+print('Всего было распределено',Curr,'задач.')
